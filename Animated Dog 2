@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Description</title>
+</head>
+<body>
+
+    <p id="dogDescription"></p>
+    <p id="dogConstDescription"></p>
+
+    <script>
+        // Step 1: Create a literal object named myDog
+        const myDog = {
+            name: "Scooby-Doo",
+            breed: "Great Dane",
+            show: "Scooby-Doo, Where Are You!",
+            creator: "Joe Ruby and Ken Spears",
+            mySound: "My catch phrase is: Ruh-roh!",
+
+            // Add a method to display the dog's details
+            describe: function() {
+                return `Hello, my name is ${this.name}, I am a ${this.breed} from the show "${this.show}". Created by ${this.creator}. ${this.mySound} and when I bark you should not be scared, I am big but very friendly`;
+            }
+        };
+
+        // Display the dog's details in the HTML
+        document.getElementById("dogDescription").innerText = myDog.describe();
+
+        // Step 2: Create a constructor for Dog objects
+        function Dog(name, breed, show, creator, mySound, canTalk) {
+            this.name = name;
+            this.breed = breed;
+            this.show = show;
+            this.creator = creator;
+            this.mySound = mySound;
+            this.canTalk = canTalk;
+
+            // Add a method to display the dog's greeting
+            this.myGreeting = function() {
+                return this.canTalk ? `${this.name} says: ${this.mySound}` : `${this.name} cannot talk.`;
+            };
+        }
+
+        // Step 3: Create a new Dog object using the constructor
+        const myDogConst = new Dog("Scooby-Doo", "Great Dane", "Scooby-Doo, Where Are You!", "Joe Ruby and Ken Spears", "Scooby-Dooby Doooooo!", true);
+
+        // Display the new dog's details in the HTML
+        document.getElementById("dogConstDescription").innerText = myDogConst.myGreeting();
+    </script>
+</body>
+</html>
