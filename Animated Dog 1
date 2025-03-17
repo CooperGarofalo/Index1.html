@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Description</title>
+</head>
+<body>
+    
+    <p id="dogDescription"></p>
+
+    <script>
+        // Step 1: Create a literal object named myDog
+        const myDog = {
+            name: "Scooby-Doo",
+            breed: "Great Dane",
+            show: "Scooby-Doo, Where Are You!",
+            created: "solve mysteries",
+            mySound: "When I bark I am not scary, I even laugh sometimes.",
+
+            // Step 2: Add a method to display the dog's details
+            describe: function() {
+                return `Hello, my name is ${this.name}, I am a ${this.breed} from the show "${this.show}". My friends and I ${this.created}. ${this.mySound}`;
+            }
+        };
+
+        // Step 3: Display the dog's details in the HTML
+        document.getElementById("dogDescription").innerText = myDog.describe();
+    </script>
+</body>
+</html>
