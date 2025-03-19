@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Description</title>
+</head>
+<body>
+    <p id="selectedDogDescription"></p>
+    <p> Enter Either: Scooby-Doo, Brian Griffin or Snoopy </p>
+    <input type="text" id="dogNameInput" placeholder="Type dog name here">
+    <button onclick="selectDog()">Select Dog</button>
+    <script>
+        // Step 1: Create a constructor for Dog objects
+        function Dog(name, breed, show, creator, mySound, canTalk) {
+            this.name = name;
+            this.breed = breed;
+            this.show = show;
+            this.creator = creator;
+            this.mySound = mySound;
+            this.canTalk = canTalk;
+            // Add a method to display the dog's greeting
+            this.myGreeting = function() {
+                return this.canTalk ? `${this.name} says: ${this.mySound}. I can talk!` : `${this.name} says: ${this.mySound}. I cannot talk.`;
+            };
+        }
+
+        // Step 2: Create new Dog objects using the constructor
+        const scoobyDoo = new Dog("Scooby-Doo", "Great Dane", "Scooby-Doo, Where Are You!", "Joe Ruby and Ken Spears", "Scooby-Dooby Doooooo!", true);
+        const brianGriffin = new Dog("Brian Griffin", "Labrador Retriever", "Family Guy", "Seth MacFarlane", "Hey, what's up?", true);
+        const snoopy = new Dog("Snoopy", "Beagle", "Peanuts", "Charles M. Schulz", "Uses sound to describe mood", false);
+
+        // Step 3: Use a for...in loop to display each property and value in the object
+        function displayDogDetails(dog) {
+            let details = "";
+            for (let property in dog) {
+                if (dog.hasOwnProperty(property) && typeof dog[property] !== 'function') {
+                    details += `${property}: ${dog[property]}\n`;
+                }
+            }
+            return details;
+        }
+
+        // Function to select a dog based on user input
+        function selectDog() {
+            const selectedDogName = document.getElementById("dogNameInput").value;
+            let selectedDog;
+            if (selectedDogName === "Scooby-Doo") {
+                selectedDog = scoobyDoo;
+            } else if (selectedDogName === "Brian Griffin") {
+                selectedDog = brianGriffin;
+            } else if (selectedDogName === "Snoopy") {
+                selectedDog = snoopy;
+            } else {
+                document.getElementById("selectedDogDescription").innerText = "Error: The dog you selected does not exist.";
+                return;
+            }
+
+            document.getElementById("selectedDogDescription").innerText = displayDogDetails(selectedDog) + "\n" + selectedDog.myGreeting();
+        }
+    </script>
+</body>
+</html>
