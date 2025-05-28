@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Loops & Arrays</title>
+</head>
+<body>
+
+    <h2>JavaScript Loop & Array Demonstration</h2>
+    <div id="output"></div> <!-- Placeholder for displaying output -->
+
+    <script>
+        // Function to display output on webpage
+        function displayMessage(message) {
+            let outputDiv = document.getElementById("output");
+            outputDiv.innerHTML += message + "<br>";
+        }
+
+        // For loop: Checking odd/even numbers
+        displayMessage("<strong>Odd/Even Number Check:</strong>");
+        for (let i = 0; i <= 10; i++) {
+            let type = (i % 2 === 0) ? "even" : "odd";
+            displayMessage(`Count ${i} is ${type}`);
+        }
+
+        // Asking user for input between 5 and 20
+        let myNum;
+        do {
+            myNum = parseInt(prompt("Enter a number between 5 and 20: "));
+        } while (isNaN(myNum) || myNum < 5 || myNum > 20);
+
+        // Do-while loop to count up to myNum
+        displayMessage("<br><strong>Counting using Do While Loop:</strong>");
+        let count = 1;
+        do {
+            displayMessage(`Count: ${count}`);
+            count++;
+        } while (count <= myNum);
+
+        // Array of subjects
+        let subjects = ["Accounting", "Algebra", "Programming", "Art", "Data Analytics"];
+
+        // Display using forEach
+        displayMessage("<br><strong>Subjects List:</strong>");
+        subjects.forEach(subject => displayMessage(subject));
+
+        // Display using join to separate values with commas
+        displayMessage("<br><strong>Subjects in one statement:</strong>");
+        displayMessage(subjects.join(", "));
+
+    </script>
+</body>
+</html>
